@@ -24,6 +24,13 @@ VCC_METRICS = [
     "overlap_at_N",
 ]
 
+FLEETWOOD_METRICS = [
+    "mae",
+    "discrimination_score_l1",
+    "overlap_at_N",
+    "pearson_delta",
+]
+
 KNOWN_PROFILES = [
     "full",
     "minimal",
@@ -39,7 +46,7 @@ class MetricPipeline:
 
     def __init__(
         self,
-        profile: Literal["full", "minimal", "vcc", "de", "anndata", "pds"]
+        profile: Literal["full", "minimal", "vcc", "fleetwood", "de", "anndata", "pds"]
         | None = "full",
         metric_configs: dict[str, dict[str, Any]] | None = None,
         break_on_error: bool = False,
@@ -73,6 +80,8 @@ class MetricPipeline:
                 self._metrics.extend(MINIMAL_METRICS)
             case "vcc":
                 self._metrics.extend(VCC_METRICS)
+            case "fleetwood":
+                self._metrics.extend(FLEETWOOD_METRICS)
             case "pds":
                 self._metrics.extend(["discrimination_score_l1"])
             case None:
