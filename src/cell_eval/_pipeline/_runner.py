@@ -29,6 +29,7 @@ FLEETWOOD_METRICS = [
     "discrimination_score_l1",
     "overlap_at_N",
     "pearson_delta",
+    "de_spearman_lfc_sig"
 ]
 
 KNOWN_PROFILES = [
